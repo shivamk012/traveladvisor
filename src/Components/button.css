@@ -1,0 +1,4 @@
+.btn-outline-dark:hover , .btn-outline-dark:focus , .btn-outline-dark.dropdown-toggle.show{
+    color : black;
+    background-color: white;
+}

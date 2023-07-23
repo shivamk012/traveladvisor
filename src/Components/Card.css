@@ -1,0 +1,15 @@
+.dot {
+  height: 12px;
+  width: 12px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.color-green{
+  background-color: rgb(7, 190, 7);
+}
+
+.color-gradient{
+  background-color: linear-gradient(to right,  #9c9e9f 0%,#9c9e9f 50%,#f6f6f6 50%,#f6f6f6 100%);
+}

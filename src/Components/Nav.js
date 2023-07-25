@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import DropDown from "./DropDown";
 import Button from "./Button";
 import Modal from "./Modal";
+import AutocompleteSearch from "./AutocompleteSearch";
+
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function Nav({stateChange , data , changeFilterData , setLoading , setLocation}) {
+export default function Nav({location , stateChange , data , changeFilterData , setLoading , setLocation}) {
   const [startDate, setStartDate] = useState(new Date());
   const [datePickerIsOpen , setDatePicker] = useState(false);
   const [showButton , setShowButton] = useState(false);
@@ -59,7 +61,8 @@ export default function Nav({stateChange , data , changeFilterData , setLoading 
           />}
           </div>
           <div className="col-5">
-            <SearchBar setLocation = {setLocation} stateChange = {stateChange} userNeed = {dropValue} checkIn = {startDate} setLoading={setLoading}/>
+            <SearchBar location = {location} setLocation = {setLocation} stateChange = {stateChange} userNeed = {dropValue} checkIn = {startDate} setLoading={setLoading}/>
+            {/* <AutocompleteSearch/> */}
           </div>
           <div className="col-4" style={{"width" : "30%" , "textAlign" : "center"}}>
             <Modal dropDownRating={dropDownRating} filter={filter} setFilter={setFilter}/>

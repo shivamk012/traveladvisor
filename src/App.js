@@ -16,7 +16,7 @@ function App(){
 
   return (
     <div className='App overflow-hidden'>
-      <div style={{"width" : "100%"}}><Nav setLocation={setLocation} stateChange = {changeData} data={data} changeFilterData = {changeFilterData} setLoading={setLoading}/></div>
+      <div style={{"width" : "100%"}}><Nav location = {location} setLocation={setLocation} stateChange = {changeData} data={data} changeFilterData = {changeFilterData} setLoading={setLoading}/></div>
       <div style={{"width" : "100%"}}>
         <div className='container-fluid gx-0' style={{"maxHeight" : "100vh"}}>
         <div className='row'>

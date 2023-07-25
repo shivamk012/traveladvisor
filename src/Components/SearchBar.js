@@ -1,28 +1,27 @@
 import './SearchBar.css'
-import {ImSearch} from 'react-icons/im';
-import { getLocation } from './Services/Location';
 import { useEffect, useState } from 'react';
 import { getPlaces } from './Services/Places';
 import {extractRestaurant} from './Services/extractRestaurant';
 import { extractAttraction } from './Services/extractAttractions';
 import { getHotels } from './Services/Hotels';
 import { extractHotel } from './Services/extractHotel';
+import InputField from './InputField';
 
-export default function SearchBar({stateChange , userNeed , checkIn , setLoading , setLocation}) {
+export default function SearchBar({stateChange , userNeed , checkIn , setLoading , setLocation , location}) {
   const [searchTerm , setSearchTerm] = useState('');
 
-  const handleChange = (e) => {
-    e.preventDefault();
-    setSearchTerm(e.target.value);
+  const filterUndefined = (arr) => {
+    arr = arr.filter((el) => {return el !== undefined && el.imgLink !== undefined && el.imgLink.images !== undefined});
+    return arr;
   }
 
   const useeffecthotel = async() => {
     setLoading(true);
     if(searchTerm != "") {
-      const result = await getLocation(searchTerm);
+      const result = {latitude : location.latitude , longitude : location.longitude};
       const userInterest = await getHotels(result , checkIn);
       stateChange({
-        items : extractHotel(userInterest),
+        items : filterUndefined(extractHotel(userInterest)),
         changed : 'hotels'
       });
     }
@@ -37,17 +36,16 @@ export default function SearchBar({stateChange , userNeed , checkIn , setLoading
     // e.preventDefault();
     setLoading(true);
     if(searchTerm != "") {
-      const result = await getLocation(searchTerm);
-      setLocation({lat : result.latitude , lon : result.longitude});
+      const result = {latitude : location.latitude , longitude : location.longitude};
       if(userNeed === "restaurants" || userNeed === "attractions"){
         const userInterest = await getPlaces(result , userNeed);
         if(userNeed === "restaurants") {
           stateChange({
-            items : extractRestaurant(userInterest),
+            items : filterUndefined(extractRestaurant(userInterest)),
             changed : 'restaurants'
           })} 
         else {
-          const extractedAttraction = extractAttraction(userInterest);
+          const extractedAttraction = filterUndefined(extractAttraction(userInterest));
           stateChange({
             items : extractedAttraction,
             changed : 'attractions'
@@ -56,7 +54,7 @@ export default function SearchBar({stateChange , userNeed , checkIn , setLoading
       }else{
         const userInterest = await getHotels(result , checkIn);
         stateChange({
-          items : extractHotel(userInterest),
+          items : filterUndefined(extractHotel(userInterest)),
           changed : 'hotels'
         });
       }
@@ -69,16 +67,13 @@ export default function SearchBar({stateChange , userNeed , checkIn , setLoading
     handleSubmit();
   },[userNeed]);
 
-  const handleLocationChange = (e) => {
-    console.log(e);
-  }
+  useEffect(() => {
+    handleSubmit();
+  } , [searchTerm])
 
   return (
     <div>
-      <form onSubmit={(e) => {e.preventDefault();handleSubmit()}}>
-        <button className="icon-btn" type="submit"><ImSearch/></button>   
-        <input type="search" placeholder="Where to?" value={searchTerm} onChange={(e) => handleChange(e)} />
-      </form>
+      <InputField setLocation={setLocation} setSearchTerm={setSearchTerm}/>
     </div>
   )
 }

@@ -11,7 +11,7 @@ export default function App({data}) {
   }
 
   return (
-    <div className="App">
+    <div>
        <Map
       mapboxAccessToken={token}
       initialViewState={{

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import Listitems from "./Listitems";
-
-export default function List({data , changeFilterData}) {
+import '../List.css';
+export default function List({data , changeFilterData , isLoading}) {
   const [sliderValue , setsliderValue] = useState(5);
 
   const handleChange = (value) => {
@@ -26,9 +26,10 @@ export default function List({data , changeFilterData}) {
         </div>
         <input id="range-slider"type="range" className="form-range text-dark" style={{"height" : "0"}} min={1} max={5} defaultValue={sliderValue} step={1} onChange={(e) => handleChange(e.target.value)}/>
       </div>
-      <div className="overflow-scroll" style={{"maxHeight" : "100vh"}}>
+      {isLoading ? <div class="spinner-border text-dark" role="status">
+            </div> : <div className="list" >
         <Listitems data={data}/>
-      </div>
+      </div>}
     </div>
   )
 }

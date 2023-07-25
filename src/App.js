@@ -2,7 +2,6 @@ import './App.css';
 import Maps from './Components/Maps'
 import List from './Components/List';
 import Nav from './Components/Nav';
-import Spinner from './Components/Spinner';
 import { useEffect, useState } from 'react';
 function App(){
 

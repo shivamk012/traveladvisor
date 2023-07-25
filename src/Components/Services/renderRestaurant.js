@@ -1,6 +1,8 @@
 import {AiOutlineHeart} from 'react-icons/ai';
 
 const renderRestaurant = (items) => {
+    items = items.filter((el) => {return el !== undefined && el.imgLink !== undefined});
+    // console.log(items);
     const ratings = items.map(item => {
         if(!item) return NaN;
         let arr = [] , rate = Number(item.rating);
@@ -11,7 +13,7 @@ const renderRestaurant = (items) => {
                 arr.push(<span className="dot color-gradient" ></span>)
                 rate=0;
             }else{
-                arr.push(<span className="dot color-green"></span>);
+                arr.push(<span className="dot" style={{"backgroundColor" : "rgb(44, 237, 144)"}}></span>);
             }
             rate--;
         }
@@ -21,15 +23,15 @@ const renderRestaurant = (items) => {
     const cuisineItem = items.map(item => {
         if(!item) return [];
         return <div key={item.name} >
-            {item.cuisine.map((el) => {
-                return <span className="badge text-dark rounded-pill" style={{"backgroundColor" : "#e0e0e0"}}>{el.name}</span>
+            {item.cuisine.map((el , index) => {
+                return <span key={`${item.name} - ${el.name} - ${index}`}className="badge text-dark rounded-pill" style={{"backgroundColor" : "#e0e0e0"}}>{el.name}</span>
             })}
         </div>
     })
 
 
     let renderItems = items.map((item , index) => {
-        if(!item) return [];
+        if(item === undefined) return [];
         return item && (<div key={index} className="card p-2 border-bottom border-top-0 border-end-0 border-start-0" >
         <div className="row g-0">
             <div className="col-md-4">

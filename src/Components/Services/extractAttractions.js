@@ -1,5 +1,4 @@
 const extractAttraction = (data) => {
-    console.log(data);
     const renderData = data.map((el) => {
         if(el.name) return {
             name: el.name,

@@ -6,7 +6,7 @@ import Button from "./Button";
 import Modal from "./Modal";
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function Nav({stateChange , data , changeFilterData , setLoading}) {
+export default function Nav({stateChange , data , changeFilterData , setLoading , setLocation}) {
   const [startDate, setStartDate] = useState(new Date());
   const [datePickerIsOpen , setDatePicker] = useState(false);
   const [showButton , setShowButton] = useState(false);
@@ -59,7 +59,7 @@ export default function Nav({stateChange , data , changeFilterData , setLoading}
           />}
           </div>
           <div className="col-5">
-            <SearchBar stateChange = {stateChange} userNeed = {dropValue} checkIn = {startDate} setLoading={setLoading}/>
+            <SearchBar setLocation = {setLocation} stateChange = {stateChange} userNeed = {dropValue} checkIn = {startDate} setLoading={setLoading}/>
           </div>
           <div className="col-4" style={{"width" : "30%" , "textAlign" : "center"}}>
             <Modal dropDownRating={dropDownRating} filter={filter} setFilter={setFilter}/>

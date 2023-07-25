@@ -1,5 +1,27 @@
 .list{
     overflow-y: scroll;
-    max-height: 100vh;
+    max-height: calc(100vh - 150px);
     width : 100%;
 }
+
+.slider-input{
+    height: 3px;
+    width: 80%;
+    -webkit-appearance: none;
+    outline: none;
+    background : lightgreen;
+    border-radius: 25px;
+    box-shadow: inset 0px 0px 4px rgba(0,0,0,0.2);
+}
+
+.slider-input::-webkit-slider-runnable-track{
+    background: rgb(44, 237, 144);
+}
+
+    .slider-input::-webkit-slider-thumb{
+        -webkit-appearance: none;
+        width: 5px;
+        height: 20px;
+        border-radius: 0;
+        cursor: pointer;
+    }

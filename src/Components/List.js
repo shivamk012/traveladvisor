@@ -10,8 +10,10 @@ export default function List({data , changeFilterData , isLoading}) {
 
   useEffect(() => {
     if(!("items" in data)) return;
-    const filteredData = data.items.filter((el) => {return el !== undefined && Number(el.distance.slice(0,3)) <= sliderValue});
-    console.log(data);
+    // console.log(parseFloat(sliderValue) , data.items);
+    const arr = data.items.filter((el) => {return el !== undefined && el.distance !== undefined});
+    const filteredData = arr.filter((el) => {return parseFloat(el.distance.slice(0,3)) <= parseFloat(sliderValue)});
+    //console.log(filteredData);
     changeFilterData({items : filteredData , changed : data.changed});
   } , [sliderValue])
 
@@ -24,9 +26,10 @@ export default function List({data , changeFilterData , isLoading}) {
           <label htmlFor="range-slider" className="form-label">Distance</label>
           <p>{sliderValue}km</p>
         </div>
-        <input id="range-slider"type="range" className="form-range text-dark" style={{"height" : "0"}} min={1} max={5} defaultValue={sliderValue} step={1} onChange={(e) => handleChange(e.target.value)}/>
+        <input id="range-slider"type="range" className="form-range text-dark slider-input" style={{"height" : "0"}} min={1} max={5} defaultValue={sliderValue} step={1} onChange={(e) => handleChange(e.target.value)}/>
       </div>
-      {isLoading ? <div class="spinner-border text-dark" role="status">
+      {"items" in data ? <div>{data.items.length} places sorted by traveler favorites. {data.items.length === 0 ? 'Sorry we dont have enough data currently' : ''}</div> : null}
+      {isLoading ? <div className="spinner-border text-dark" role="status">
             </div> : <div className="list" >
         <Listitems data={data}/>
       </div>}

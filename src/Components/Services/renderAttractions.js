@@ -1,5 +1,9 @@
+import {AiOutlineHeart} from 'react-icons/ai';
+
 const renderAttractions = (items) => {
     // console.log(items);
+    items = items.filter((el) => {return el !== undefined && el.imgLink !== undefined});
+    
     const ratings = items.map(item => {
         if(!item) return NaN;
         let arr = [] , rate = Number(item.rating);
@@ -34,7 +38,8 @@ const renderAttractions = (items) => {
         return item && (<div key={index} className="card p-2 border-bottom border-top-0 border-end-0 border-start-0" >
         <div className="row g-0">
             <div className="col-md-4">
-                <img src={item.imgLink.images.original.url} style={{"height" : "100%"}} className="img-thumbnail rounded-start" alt="..."/>
+                <img src={item.imgLink.images.original.url} style={{"height" : "100%"}} className="img-thumbnail rounded-start position-relative" alt="..."/>
+                <div className='position-absolute rounded-circle' style={{"top" : "8%" , "right" : "68%" , "backgroundColor" : "white" , "height" : "30px" , "width" : "30px" , "textAlign" : "center"}}><AiOutlineHeart style={{"fontSize" : "25px"}}/></div>
             </div>
             <div className="col-md-8">
                 <div className="card-body">

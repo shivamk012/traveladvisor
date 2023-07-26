@@ -20,7 +20,7 @@ function App(){
       <div style={{"width" : "100%"}}>
         <div className='container-fluid gx-0' style={{"maxHeight" : "100vh"}}>
         <div className='row'>
-           <div className='col-lg' ><List data={filterData} changeFilterData = {changeFilterData} isLoading={isLoading}/></div>
+           <div className='col-lg' ><List data={filterData} actualData = {data} changeFilterData = {changeFilterData} isLoading={isLoading}/></div>
           <div className='col-lg'><Maps location = {location} data={filterData}/></div>
         </div>
       </div>

@@ -19,15 +19,14 @@ const InputField = ({setLocation , setSearchTerm}) => {
             type="search"
           placeholder="Address"
           {...address}
-          isTyping={address.value !== ""}
         />
         {address.suggestions?.length > 0 && (
           <div className="SuggestionWrapper">
             {address.suggestions.map((suggestion, index) => {
                 return (
-                  <div className="d-flex"><div className="icon"><ImLocation/></div>
+                  <div key={index} className="d-flex"><div className="icon"><ImLocation/></div>
                 <div className="Suggestion"
-                  key={index}
+                  
                   onClick={() => {
                     address.setValue(suggestion.place_name);
                     address.setSuggestions([]);

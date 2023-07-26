@@ -13,7 +13,7 @@ const useInput = (initialValue) => {
       const results = await response.json();
       setSuggestions(results?.features);
     } catch (error) {
-      console.log("Error fetching data, ", error);
+      // console.log("Error fetching data, ", error);
     }
   };
 

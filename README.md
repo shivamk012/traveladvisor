@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+#Travel Advisor
+App built to give user a stop place to search for hotel , restaurant and attraction places of a location.
+
+## Installing instructions for this app.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

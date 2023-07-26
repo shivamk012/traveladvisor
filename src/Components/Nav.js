@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import DropDown from "./DropDown";
 import Button from "./Button";
 import Modal from "./Modal";
-import AutocompleteSearch from "./AutocompleteSearch";
 
 import "react-datepicker/dist/react-datepicker.css";
 

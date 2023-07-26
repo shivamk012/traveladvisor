@@ -53,7 +53,7 @@ const renderRestaurant = (items) => {
         </div>
     </div>)
     })
-    renderItems = renderItems.filter((el) => {return el.length != 0});
+    renderItems = renderItems.filter((el) => {return el.length !== 0});
     return renderItems;
 }
 

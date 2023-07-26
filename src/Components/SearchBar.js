@@ -17,7 +17,7 @@ export default function SearchBar({stateChange , userNeed , checkIn , setLoading
 
   const useeffecthotel = async() => {
     setLoading(true);
-    if(searchTerm != "") {
+    if(searchTerm !== "") {
       const result = {latitude : location.latitude , longitude : location.longitude};
       const userInterest = await getHotels(result , checkIn);
       stateChange({
@@ -35,7 +35,7 @@ export default function SearchBar({stateChange , userNeed , checkIn , setLoading
   const handleSubmit = async(e) => {
     // e.preventDefault();
     setLoading(true);
-    if(searchTerm != "") {
+    if(searchTerm !== "") {
       const result = {latitude : location.latitude , longitude : location.longitude};
       if(userNeed === "restaurants" || userNeed === "attractions"){
         const userInterest = await getPlaces(result , userNeed);

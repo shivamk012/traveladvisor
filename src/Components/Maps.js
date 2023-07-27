@@ -15,7 +15,7 @@ export default function App({data , location}) {
   const locationData = ("items" in data ? data.items.filter(el => {return el !== undefined}) : []); 
   let markers = [];
   for(let i=0 ; i<locationData.length ; i++){
-    markers.push(<Marker key={i} longitude={locationData[i].longitude} latitude={locationData[i].latitude} color="red" />);
+    markers.push(<Marker key={i} longitude={locationData[i].longitude} latitude={locationData[i].latitude} color="green" />);
   }
 
   let mapRef = createRef();

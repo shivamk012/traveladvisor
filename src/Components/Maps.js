@@ -1,6 +1,7 @@
 import Map , {Marker  } from 'react-map-gl';
 import mapboxgl from 'mapbox-gl';
 import { useEffect ,  createRef} from 'react';
+import { useSelector } from 'react-redux';
 
 // The following is required to stop "npm build" from transpiling mapbox code.
 // notice the exclamation point in the import.
@@ -11,7 +12,8 @@ mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worke
 const token = process.env.REACT_APP_Access_Token;
 
 
-export default function App({data , location}) {
+export default function App({data}) {
+  const location = useSelector(state => state.location);
   const locationData = ("items" in data ? data.items.filter(el => {return el !== undefined}) : []); 
   let markers = [];
   for(let i=0 ; i<locationData.length ; i++){

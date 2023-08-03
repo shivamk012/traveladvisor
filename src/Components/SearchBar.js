@@ -5,9 +5,11 @@ import {extractRestaurant} from './Services/extractRestaurant';
 import { extractAttraction } from './Services/extractAttractions';
 import { getHotels } from './Services/Hotels';
 import { extractHotel } from './Services/extractHotel';
+import { useSelector } from 'react-redux';
 import InputField from './InputField';
 
-export default function SearchBar({stateChange , userNeed , checkIn , setLoading , setLocation , location}) {
+export default function SearchBar({stateChange , userNeed , checkIn , setLoading , setLocation , locations}) {
+  const location = useSelector(state => state.location);
   const [searchTerm , setSearchTerm] = useState('');
 
   const filterUndefined = (arr) => {

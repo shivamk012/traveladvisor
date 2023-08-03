@@ -2,12 +2,15 @@ import useInput from "../Hooks/useInput";
 import './InputField.css';
 import {ImSearch} from 'react-icons/im';
 import {ImLocation} from 'react-icons/im';
+import { useDispatch } from "react-redux";
+import { changeLocation } from "../store/store";
 
-const InputField = ({setLocation , setSearchTerm}) => {
+const InputField = ({ setSearchTerm}) => {
     const address = useInput("");
-  
+    const dispatch = useDispatch();
+
     const handleClick = (suggestion) => {
-        setLocation({latitude : suggestion.center[1] , longitude : suggestion.center[0]});
+        dispatch(changeLocation({latitude : suggestion.center[1] , longitude : suggestion.center[0]}));
         setSearchTerm(suggestion.place_name);
     }
 

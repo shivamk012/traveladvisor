@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import DropDown from "./DropDown";
 import Button from "./Button";
 import Modal from "./Modal";
+import { useSelector } from "react-redux";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function Nav({location , stateChange , data , changeFilterData , setLoading , setLocation}) {
+export default function Nav({stateChange , data , changeFilterData , setLoading}) {
   const [startDate, setStartDate] = useState(new Date());
   const [datePickerIsOpen , setDatePicker] = useState(false);
   const [showButton , setShowButton] = useState(false);
@@ -60,7 +61,7 @@ export default function Nav({location , stateChange , data , changeFilterData , 
           />}
           </div>
           <div className="col-5">
-            <SearchBar location = {location} setLocation = {setLocation} stateChange = {stateChange} userNeed = {dropValue} checkIn = {startDate} setLoading={setLoading}/>
+            <SearchBar stateChange = {stateChange} userNeed = {dropValue} checkIn = {startDate} setLoading={setLoading}/>
             {/* <AutocompleteSearch/> */}
           </div>
           <div className="col-4" style={{"width" : "30%" , "textAlign" : "center"}}>
